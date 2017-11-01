@@ -20,27 +20,12 @@ AddEventHandler('esx_accessories:save', function(skin, accessory)
 		
 		store.set('has' .. accessory, true)
 
-		if accessory == 'Ears' then		
-			store.set('skin', {
-				ears_1 = skin.ears_1,
-				ears_2 = skin.ears_2
-			})
-		elseif accessory == 'Helmet' then	
-			store.set('skin', {
-				helmet_1 = skin.helmet_1,
-				helmet_2 = skin.helmet_2
-			})
-		elseif accessory == 'Mask' then	
-			store.set('skin', {
-				mask_1 = skin.mask_1,
-				mask_2 = skin.mask_2
-			})
-		elseif accessory == 'Glasses' then
-			store.set('skin', {
-				glasses_1 = skin.glasses_1,
-				glasses_2 = skin.glasses_2
-			})
-		end
+		local itemSkin = {}
+		local item1 = string.lower(accessory) .. '_1'
+		local item2 = string.lower(accessory) .. '_2'
+		itemSkin[item1] = skin[item1]
+		itemSkin[item2] = skin[item2]
+		store.set('skin', itemSkin)
 
 	end)
 

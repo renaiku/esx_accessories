@@ -85,15 +85,7 @@ function OpenShopMenu(accessory)
 
 	local restrict = {}
 
-	if accessory == "Ears" then
-		restrict = {"ears_1", "ears_2"}
-	elseif accessory == "Mask" then
-		restrict = {"ears_1", "ears_2"}
-	elseif accessory == "Mask" then
-		restrict = {"ears_1", "ears_2"}
-	elseif accessory == "Mask" then
-		restrict = {"ears_1", "ears_2"}
-	end
+	restrict = { string.lower(accessory) .. '_1', string.lower(accessory) .. '_2' }
 	
 	TriggerEvent('esx_skin:openRestrictedMenu', function(data, menu)
 
@@ -132,7 +124,15 @@ function OpenShopMenu(accessory)
 					TriggerEvent('esx_skin:getLastSkin', function(skin)
 						TriggerEvent('skinchanger:loadSkin', skin)
 					end)
-					SetPedComponentVariation(player, 1, 0 ,0 ,2)
+					if accessory == "Ears" then
+					    ClearPedProp(Player, 2)
+					elseif accessory == "Mask" then
+					    SetPedComponentVariation(player, 1, 0 ,0 ,2)
+					elseif accessory == "Helmet" then
+					    ClearPedProp(Player, 0)
+					elseif accessory == "Glasses" then
+					    SetPedPropIndex(player, 1, -1, 0, 0)
+					end
 				end
 				CurrentAction     = 'shop_menu'
 				CurrentActionMsg  = _U('press_access')
@@ -231,7 +231,6 @@ Citizen.CreateThread(function()
 		local coords      = GetEntityCoords(GetPlayerPed(-1))
 		local isInMarker  = false
 		local currentZone = nil
-
 		for k,v in pairs(Config.Zones) do
 			for i = 1, #v.Pos, 1 do
 				if(GetDistanceBetweenCoords(coords, v.Pos[i].x, v.Pos[i].y, v.Pos[i].z, true) < Config.Size.x) then
