@@ -5,17 +5,17 @@ description 'ESX Accessories'
 version '0.0.8'
 
 server_scripts {
-	'@es_extended/locale.lua',
-	'locales/en.lua',
-	'locales/fr.lua',
-	'config.lua',
-	'server/main.lua'
+    '@es_extended/locale.lua',
+    'locales/en.lua',
+    'locales/fr.lua',
+    'config.lua',
+    'server/main.lua'
 }
 
 client_scripts {
-	'@es_extended/locale.lua',
-	'locales/en.lua',
-	'locales/fr.lua',
-	'config.lua',
-	'client/main.lua'
+    '@es_extended/locale.lua',
+    'locales/en.lua',
+    'locales/fr.lua',
+    'config.lua',
+    'client/main.lua'
 }
