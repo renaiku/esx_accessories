@@ -74,7 +74,7 @@ function SetUnsetAccessory(accessory)
 
             end)
         else
-            ESX.ShowNotification(_U('no' .. _accessory))
+            ESX.ShowNotification(_U('no_' .. _accessory))
         end
 
     end, accessory)
