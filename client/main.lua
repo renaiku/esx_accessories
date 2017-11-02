@@ -51,34 +51,32 @@ function OpenAccessoryMenu()
 end
 
 function SetUnsetAccessory(accessory)
-
+    
     ESX.TriggerServerCallback('esx_accessories:get', function(hasAccessory, accessorySkin)
         local _accessory = string.lower(accessory)
 
         if hasAccessory then
             TriggerEvent('skinchanger:getSkin', function(skin)
-
-                local mAccessory = 0
-                local mColor = 0                
-
-                if skin[_accessory .. '_1'] == 0 then
+                local mAccessory = -1
+                local mColor = 0      
+                if _accessory == "mask" then
+                    mAccessory = 0
+                end
+                if skin[_accessory .. '_1'] == mAccessory then
                     mAccessory = accessorySkin[_accessory .. '_1']
                     mColor = accessorySkin[_accessory .. '_2']
                 end
-
                 local accessorySkin = {}
                 accessorySkin[_accessory .. '_1'] = mAccessory
                 accessorySkin[_accessory .. '_2'] = mColor
-
                 TriggerEvent('skinchanger:loadClothes', skin, accessorySkin)
-
             end)
         else
             ESX.ShowNotification(_U('no_' .. _accessory))
         end
 
     end, accessory)
-
+    
 end
 
 function OpenShopMenu(accessory)
