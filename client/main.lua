@@ -199,7 +199,7 @@ Citizen.CreateThread(function()
                 SetBlipAsShortRange(blip, true)
 
                 BeginTextCommandSetBlipName("STRING")
-                AddTextComponentString(_U('store') .. ' ' .. _U(string.lower(k)))
+                AddTextComponentString(_U('shop') .. ' ' .. _U(string.lower(k)))
                 EndTextCommandSetBlipName(blip)
             end
         end
